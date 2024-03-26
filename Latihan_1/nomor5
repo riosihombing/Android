@@ -1,0 +1,26 @@
+class TicketPrice {
+    fun getPrice(age: Int, day: String): Int {
+        return when {
+            age in 0..12 -> 15
+            age in 13..60 -> if (day.equals("Monday", ignoreCase = true)) 25 else 30
+            age in 61..100 -> 20
+            else -> -1
+        }
+    }
+}
+
+fun main() {
+    val ticketPriceCalculator = TicketPrice()
+
+    val age1 = 5
+    val price1 = ticketPriceCalculator.getPrice(age1, "Monday")
+    println("The movie ticket price for a person aged $age1 is $$price1")
+
+    val age2 = 28
+    val price2 = ticketPriceCalculator.getPrice(age2, "Monday")
+    println("The movie ticket price for a person aged $age2 is $$price2")
+
+    val age3 = 87
+    val price3 = ticketPriceCalculator.getPrice(age3, "Monday")
+    println("The movie ticket price for a person aged $age3 is $$price3")
+}
